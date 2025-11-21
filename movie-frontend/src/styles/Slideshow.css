@@ -1,0 +1,50 @@
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.slideshow-slider {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  padding: 0 50px; /* Increased padding slightly for button clearance */
+}
+
+.slide {
+  /* width: 100%; <- Removed to allow natural sizing from MovieCard */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -30px; /* Adjust to center */
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.3s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0,0,0,0.4);
+  border: none;
+  z-index: 10;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev {
+  left: 0;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}

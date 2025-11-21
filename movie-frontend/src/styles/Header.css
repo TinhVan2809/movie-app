@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+  --font-family: "Roboto", sans-serif;
+
+  --color: #272722;
+  --background-color: #ffffff;
+  --text: rgba(255, 255, 255, 0.815);
+
+  --background-color-a: rgba(17, 17, 211, 0.699);
+
+  --font-synthesis: none;
+  --text-rendering: optimizeLegibility;
+  --webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+nav.nav-container {
+    background-color:var(--background-color);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+nav.nav-container > header.nav-header {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 2rem;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+nav.nav-container > header .logo  {
+    display: flex;
+    margin-right: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+
+nav.nav-container > header .logo > img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: none;
+    border-radius: 50%;
+}
+
+nav.nav-container > header .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+nav.nav-container > header .links > a {
+    color: var(--color);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 30px;
+    transition: all 0.375s ease;
+}
+
+
+nav.nav-container > header .links > a:hover {
+    background-color: var(--background-color-a);
+    color: var(--text);
+}
+
+nav.nav-container > header .links a.active{
+    background-color: var(--background-color-a);
+    color: var(--text);
+}
