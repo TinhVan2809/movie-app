@@ -11,6 +11,8 @@ import Home from "./pages/Home";
 import Search from "./pages/SearchResult";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import History from "./pages/History";
+import About from "./pages/About";
 
 export default function App() {
   return (
@@ -22,7 +24,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
-      </Routes>
+        <Route path="/history" element={<History />} />
+        <Route path="/aboutUs" element={<About />} />
+       </Routes>
 
       {/* FOOTER */}
       <Footer />

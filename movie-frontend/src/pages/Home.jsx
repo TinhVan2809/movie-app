@@ -18,7 +18,7 @@ export default function Home() {
     <div className="movie-container">
       <div className="movie-content slideShow">
         <div className="title">
-          <h2>Trending Movies <i class="ri-arrow-right-wide-line"></i></h2>
+          <h2>Trending Movies <i className="ri-arrow-right-wide-line"></i></h2>
         </div>
         <Slideshow
           items={trending}
@@ -33,7 +33,7 @@ export default function Home() {
 
       <div className="movie-content slideShow">
         <div className="title">
-          <h2>Popular Movies <i class="ri-arrow-right-wide-line"></i></h2>
+          <h2>Popular Movies <i className="ri-arrow-right-wide-line"></i></h2>
         </div>
         <Slideshow
           items={popular}

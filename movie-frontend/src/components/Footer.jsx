@@ -14,7 +14,7 @@ function Footer() {
                         <div className="input-toogle">
                             <input type="text" 
                         placeholder="Your Email"/>
-                        <button><i class="ri-arrow-right-line"></i></button>
+                        <button><i className="ri-arrow-right-line"></i></button>
                         </div>
                     </div>
                 </div>   
@@ -42,11 +42,11 @@ function Footer() {
                         <span>©Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit accusantium vitae similique!</span>
                     </div>
                     <div className="footer-bottom-icon">
-                        <i class="ri-facebook-circle-line"></i>
-                        <i class="ri-instagram-line"></i>
-                        <i class="ri-twitter-x-line"></i>
-                        <i class="ri-tiktok-line"></i>
-                        <i class="ri-discord-line"></i>
+                        <i className="ri-facebook-circle-line"></i>
+                        <i className="ri-instagram-line"></i>
+                        <i className="ri-twitter-x-line"></i>
+                        <i className="ri-tiktok-line"></i>
+                        <i className="ri-discord-line"></i>
                     </div>
                 </div>
         </footer>

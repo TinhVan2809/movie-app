@@ -8,7 +8,7 @@ export default function MovieCard({ movie }) {
         <h3>{movie.title}</h3>
       </div>
       <div className="movie-card-vote">
-        <p> {movie.vote_average}<i class="ri-star-fill"></i></p>
+        <p> {movie.vote_average}<i className="ri-star-fill"></i></p>
       </div>
     </div>
   );
