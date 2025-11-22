@@ -64,9 +64,7 @@ app.get("/api/top-rated", async (req, res) => {
   try{
     const resp = await axios.get(`${API}/movie/top_rated`, {
       params: { api_key: process.env.TMDB_API_KEY,
-                language: 'en-US',
-                language: 'vi-VN',
-                page: 1
+                language: 'en-US'
        }, 
     });
 
@@ -74,6 +72,21 @@ app.get("/api/top-rated", async (req, res) => {
   } catch(err) {
     console.error("Error fetching top rated movies: ", err.response?.data || err.message);
     res.status(500).json({ error: "Cannot load top rated movies "});
+  }
+});
+
+//now playing 
+app.get("/api/now-playing", async (req, res) => {
+  try{
+    const resp = await axios.get(`${API}/movie/now_playing`, {
+      params: { api_key: process.env.TMDB_API_KEY, 
+        language: 'en-US'
+      },
+    });
+    res.json(resp.data);
+  } catch(err) {
+    console.error("Error fetching now playing movies: ", err.response?.data || err.message);
+    res.status(500).json({ error: "Cannot load now playing movies "});
   }
 });
 
