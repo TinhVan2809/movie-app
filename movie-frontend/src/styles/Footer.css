@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --font-family: "Roboto", sans-serif;
+
+  --color: #272722;
+  --background-color: #ffffff;
+
+  --background-btn-seeMore: #272727;
+  --background-btn-ramdom: rgba(0, 0, 255, 0.656);
+
+  --background-color--footer: #f1f1f1f1;
+  --background-button-hover: rgba(188, 24, 186, 0.792);
+
+  --font-synthesis: none;
+  --text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+footer.footer-container {
+    width: 100%;
+    background-color: var(--background-color--footer);
+    padding: 0;
+    margin: 0;
+    margin-top: 5rem;
+}
+
+footer .footer-main {
+    padding: 2rem 10rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+footer .footer-main .item {
+    display: flex;
+}
+
+footer .footer-main .footer-item1 {
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2rem;
+    width: 250px;
+}
+
+footer .footer-main .footer-item1 > header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+footer .footer-main .footer-item1 > header > p {
+    font-size: 2rem;
+    font-weight: 550;
+    font-family: "Libre Franklin", sans-serif !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+footer .footer-main .footer-item1 > header > p > span {
+    font-size: 20px;
+    color: var(--color);
+}
+
+footer .footer-main .footer-item1 > header > button {
+    padding: 9px 12px;
+    width: 100%;
+    border: transparent;
+    background-color: var(--background-btn-ramdom);
+    color: var(--text);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 550;
+    transition:  all .3s;
+}
+
+footer .footer-main .footer-item1 > header > button:hover {
+    background-color: var(--background-button-hover);
+}
+
+footer .footer-main .footer-item1 .footer-input-contact {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+footer .footer-main .footer-item1 .footer-input-contact > p{
+    font-size: 1.5em;
+    font-weight: 550;
+}
+
+footer .footer-main .footer-item1 .footer-input-contact .input-toogle  {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+footer .footer-main .footer-item1 .footer-input-contact .input-toogle > input {
+    width: 100%;
+    padding: 12px 15px;
+    outline: none;
+    border: .5px solid rgba(0, 0, 0, 0.163);
+    border-radius: 3px 25px 25px 3px;
+    font-size: 12px;
+}
+
+footer .footer-main .footer-item1 .footer-input-contact .input-toogle > button {
+    position: absolute;
+    right: 3px;
+    height: 90%;
+    width: 40px;
+    border: none;
+    background-color: var(--background-btn-ramdom);
+    color: var(--text);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+footer .footer-main .footer-item1 .footer-input-contact .input-toogle > button:hover {
+    background-color: var(--background-button-hover);
+}
+
+footer .footer-main .footer-item2 {
+    justify-content: flex-end;
+    width: 400px;
+    align-items: flex-start;
+    gap: 6rem;
+}
+
+footer .footer-main .footer-item2 .footer-links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+footer .footer-main .footer-item2 .footer-links p {
+    font-size: 17px;
+    text-transform: uppercase;
+    color: var(--background-btn-ramdom);
+    font-weight: 550;
+}
+
+footer .footer-main .footer-item2 .footer-links a {
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--color);
+    transition: all .2s;
+    text-underline-offset: 3px;
+}
+footer .footer-main .footer-item2 .footer-links a:hover {
+    text-decoration:  underline ;
+}
+
+footer.footer-container > hr {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #27272727;
+}
+
+footer .footer-bottom {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+footer .footer-bottom-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+footer .footer-bottom .coppy-right > span{
+    color: var(--color);
+    font-size: 14px;
+}
+
+footer .footer-bottom-icon > i{
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+
+

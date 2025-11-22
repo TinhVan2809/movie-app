@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles/Slideshow.css';
 
-const Slideshow = ({ items, renderItem, itemsPerScreen = 5 }) => {
+const Slideshow = ({ items, renderItem, itemsPerScreen = 6 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Total number of "pages"
