@@ -1,3 +1,19 @@
+:root {
+  --font-family: "Roboto", sans-serif;
+
+  --color: #272722;
+  --background-color: #ffffff;
+
+  --background-btn-seeMore: #272727;
+  --background-btn-ramdom: rgba(0, 0, 255, 0.656);
+
+  --font-synthesis: none;
+  --text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
 .slideshow-container {
   position: relative;
   width: 100%;
@@ -26,15 +42,16 @@
   width: auto;
   padding: 16px;
   margin-top: -30px; /* Adjust to center */
-  color: white;
+  color: var(--color);
   font-weight: bold;
   font-size: 24px;
   transition: 0.3s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
-  background-color: rgba(0,0,0,0.4);
+  background-color: transparent;
   border: none;
   z-index: 10;
+  transition: all .2s;
 }
 
 .next {
@@ -47,5 +64,5 @@
 }
 
 .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+  color: var(--background-btn-ramdom);
 }

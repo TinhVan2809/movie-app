@@ -3,33 +3,64 @@ import MovieCard from "../components/MovieCard";
 import Slideshow from "../components/Slideshow";
 import { getTrending, getPopular, getTopRated, getNowPlaying, getUpComing } from "../api/movieApi";
 
+import {getTvPopular, getTvTopRated, getTvAir} from "../api/movieApi";
+
 export default function Home() {
+  //MOVIES
   const [trending, setTrending] = useState([]);
   const [popular, setPopular] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [nowPlaying, setNowPlaying] = useState([]);
   const [upComing, setUpComing] = useState([]);
 
+  //TV SHOW
+  const [tvPopular, setTvPopular] = useState([]);
+  const [tvTopRated, setTvTopRated] = useState([]);
+  const [tvAir, setTvAir] = useState([]);
+
+  const [trendingFilter, setTrendingFilter] = useState("Today");
+
   useEffect(() => {
-    getTrending().then((res) => setTrending(res.data?.results || []));
+    //MOVIES
+    getTrending('day').then((res) => setTrending(res.data?.results || []));
     getPopular().then((res) => setPopular(res.data?.results || []));
     getTopRated().then((res) => setTopRated(res.data?.results || []));
     getNowPlaying().then((res) => setNowPlaying(res.data?.results || []));
     getUpComing().then((res) => setUpComing(res.data?.results || []));
+
+    //TV SHOWS
+    getTvPopular().then((res) => setTvPopular(res.data?.results || []));
+    getTvTopRated().then((res) => setTvTopRated(res.data?.results || []));
+    getTvAir().then((res) => setTvAir(res.data?.results || []));
+
   }, []);
 
+  useEffect(() => {
+    const timeWindow = trendingFilter === 'Today' ? 'day' : 'week';
+    getTrending(timeWindow).then((res) => setTrending(res.data?.results || []));
+  }, [trendingFilter]);
+
   const renderMovieCard = (movie) => <MovieCard key={movie.id} movie={movie} />;
+  const filters = ["Today", "This Week"];
 
   return (
+    <>
+    {/* MOVIES */}
     <div className="movie-container">
       <div className="movie-content slideShow">
         <div className="title">
           <h2>Trending Movies <i className="ri-arrow-right-wide-line"></i></h2>
           <div className="colunm-header">
             <ul>
-              <li>Today</li>
-              <li>This Week</li>
-              <li>This Month</li>
+              {filters.map((filter) => (
+                <li
+                  key={filter}
+                  className={trendingFilter === filter ? "active" : ""}
+                  onClick={() => setTrendingFilter(filter)}
+                >
+                  {filter}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -47,13 +78,6 @@ export default function Home() {
       <div className="movie-content slideShow">
         <div className="title">
           <h2>Popular Movies <i className="ri-arrow-right-wide-line"></i></h2>
-          <div className="colunm-header">
-            <ul>
-              <li>Today</li>
-              <li>This Week</li>
-              <li>This Month</li>
-            </ul>
-          </div>
         </div>
         <Slideshow
           items={popular}
@@ -69,13 +93,6 @@ export default function Home() {
       <div className="movie-content slideShow">
         <div className="title">
           <h2>Top Rated <i className="ri-arrow-right-wide-line"></i></h2>
-          <div className="colunm-header">
-            <ul>
-              <li>Today</li>
-              <li>This Week</li>
-              <li>This Month</li>
-            </ul>
-          </div>
         </div>
         <Slideshow
           items={topRated}
@@ -118,5 +135,13 @@ export default function Home() {
         </div>
       </div>
     </div>
+
+    {/* TV SHOWS */}
+
+    <div className="tvshow-container">
+          
+    </div>
+
+    </>
   );
 }

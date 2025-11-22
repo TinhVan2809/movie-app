@@ -9,9 +9,14 @@ app.use(cors());
 const API = "https://api.themoviedb.org/3";
 
 // Trending
-app.get("/api/trending", async (req, res) => {
+app.get("/api/trending/:timeWindow", async (req, res) => {
   try {
-    const resp = await axios.get(`${API}/trending/movie/day`, {
+    const { timeWindow } = req.params;
+    if (!['day', 'week'].includes(timeWindow)) {
+      return res.status(400).json({ error: "Invalid time window specified. Use 'day' or 'week'." });
+    }
+
+    const resp = await axios.get(`${API}/trending/movie/${timeWindow}`, {
       params: { api_key: process.env.TMDB_API_KEY },
     });
     console.log("Response from TMDB:", {
@@ -102,6 +107,60 @@ app.get("/api/up-coming", async (req, res) => {
   } catch(err) {
     console.error("Error fetching upcoming movies: ", err.response?.data || err.message);
     res.status(500).json({ error: "Cannot load upcoming movies"});
+  } 
+});
+
+// tv show - POPPULAR
+app.get("/api/tv/popular", async (req, res) => { // Đổi tên route cho rõ ràng
+  try{
+    // 1. Sửa endpoint thành tv/popular
+    const resp = await axios.get(`${API}/tv/popular`, {
+      params: { 
+        api_key: process.env.TMDB_API_KEY, 
+        language: 'en-US'
+      },
+    });
+    res.json(resp.data);
+  } catch(err) {
+    console.error("Error fetching Popular TV Shows: ", err.response?.data || err.message);
+    // 2. Sửa lại thông báo lỗi cho đúng
+    res.status(500).json({ error: "Cannot load popular TV shows"});
+  } 
+});
+
+// tv show - TOP RATED
+app.get("/api/tv/top-rated", async (req, res) => { // Đổi tên route cho rõ ràng
+  try{
+    // 1. Sửa endpoint thành tv/popular
+    const resp = await axios.get(`${API}/tv/top_rated`, {
+      params: { 
+        api_key: process.env.TMDB_API_KEY, 
+        language: 'en-US'
+      },
+    });
+    res.json(resp.data);
+  } catch(err) {
+    console.error("Error fetching Top Rated TV Shows: ", err.response?.data || err.message);
+    // 2. Sửa lại thông báo lỗi cho đúng
+    res.status(500).json({ error: "Cannot load Top Rated TV shows"});
+  } 
+});
+
+//tv show - ON THE AIR
+app.get("/api/tv/on-the-air", async (req, res) => { // Đổi tên route cho rõ ràng
+  try{
+    // 1. Sửa endpoint thành tv/popular
+    const resp = await axios.get(`${API}/tv/on_the_air`, {
+      params: { 
+        api_key: process.env.TMDB_API_KEY, 
+        language: 'en-US'
+      },
+    });
+    res.json(resp.data);
+  } catch(err) {
+    console.error("Error fetching On The Air TV Shows: ", err.response?.data || err.message);
+    // 2. Sửa lại thông báo lỗi cho đúng
+    res.status(500).json({ error: "Cannot load On The Air TV shows"});
   } 
 });
 
