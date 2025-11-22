@@ -1,0 +1,64 @@
+:root {
+  --font-family: "Roboto", sans-serif;
+
+  --color: #272722;
+  --background-color: #ffffff;
+
+  --background-btn-seeMore: #272727;
+  --background-btn-ramdom: rgba(0, 0, 255, 0.656);
+
+  --background-color--footer: #f1f1f1f1;
+  --background-button-hover: rgba(188, 24, 186, 0.792);
+
+  --font-synthesis: none;
+  --text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.result {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.result .grid-result{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-input {
+    display: flex;
+    padding: 0 1rem;
+    margin: 2rem 0;
+    width: 100%;
+    gap: .5rem;
+}
+
+.search-input > input {
+    width: 400px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.145);
+    font-size: 1rem;
+}
+
+.search-input > button {
+    border: none;
+    background-color: var(--background-btn-ramdom);
+    padding: 0 12px;
+    border-radius: 30px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.search-input > button:hover {
+    background-color: var(--background-button-hover);
+}
+

@@ -11,6 +11,7 @@ function Header() {
         </div>
         <div className="links">
             <NavLink to={'/'}><i className="ri-home-line"></i> Home</NavLink>
+            <NavLink to={'/filter'}>Filter <i className="ri-arrow-down-s-line"></i></NavLink>
             <NavLink to={'/search'}><i className="ri-search-line"></i> Search</NavLink>
             <NavLink to={'/categories'}><i className="ri-bubble-chart-fill"></i> Categories <i className="ri-arrow-down-s-line"></i></NavLink>
             <NavLink to={'/history'}><i className="ri-timer-2-line"></i> History</NavLink>

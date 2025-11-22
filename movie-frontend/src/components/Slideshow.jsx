@@ -4,6 +4,10 @@ import '../styles/Slideshow.css';
 const Slideshow = ({ items, renderItem, itemsPerScreen = 6 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  if (!items || items.length === 0) {
+    return <div>Loading slides...</div>;
+  }
+
   // Total number of "pages"
   const totalPages = Math.ceil(items.length / itemsPerScreen);
 
@@ -14,10 +18,6 @@ const Slideshow = ({ items, renderItem, itemsPerScreen = 6 }) => {
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex === totalPages - 1 ? 0 : prevIndex + 1));
   };
-  
-  if (!items || items.length === 0) {
-    return <div>Loading slides...</div>;
-  }
 
   // Calculate the starting and ending index for the current "page"
   const startIndex = currentIndex * itemsPerScreen;

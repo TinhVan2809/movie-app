@@ -59,4 +59,22 @@ app.get("/api/test", (req,res)=>{
   res.json({ key: process.env.TMDB_API_KEY });
 });
 
+//top rated
+app.get("/api/top-rated", async (req, res) => {
+  try{
+    const resp = await axios.get(`${API}/movie/top_rated`, {
+      params: { api_key: process.env.TMDB_API_KEY,
+                language: 'en-US',
+                language: 'vi-VN',
+                page: 1
+       }, 
+    });
+
+    res.json(resp.data);
+  } catch(err) {
+    console.error("Error fetching top rated movies: ", err.response?.data || err.message);
+    res.status(500).json({ error: "Cannot load top rated movies "});
+  }
+});
+
 app.listen(5000, () => console.log("Server chạy tại http://localhost:5000"));

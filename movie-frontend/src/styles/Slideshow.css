@@ -9,8 +9,9 @@
   justify-content: center;
   flex-wrap: nowrap;
   gap: 2rem;
-  padding: 0 50px; /* Increased padding slightly for button clearance */
+  padding: 0 50px; 
 }
+
 
 .slide {
   /* width: 100%; <- Removed to allow natural sizing from MovieCard */

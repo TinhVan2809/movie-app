@@ -35,6 +35,32 @@
   padding: 0 5rem;
 }
 
+.movie-container .movie-content .title .colunm-header {
+  padding: 0 2rem;
+}
+
+.movie-container .movie-content .title .colunm-header > ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.movie-container .movie-content .title .colunm-header > ul > li {
+ list-style: none;
+ cursor: pointer;
+ padding: 5px 10px;
+ border-radius: 30px;
+ font-size: 14px;
+ transition: all .2s;
+}
+
+.movie-container .movie-content .title .colunm-header > ul > li:hover,
+.movie-container .movie-content .title .colunm-header > ul > li.active {
+  background-color: var(--background-btn-ramdom);
+  color: var(--text);
+}
+
 .movie-container .movie-content .title > h2 {
   font-size: 19px; 
 }

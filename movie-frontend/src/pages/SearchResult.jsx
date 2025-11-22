@@ -12,21 +12,24 @@ export default function Search() {
   };
 
   return (
-    <div>
-      <h2>Search Movie</h2>
-      <input
-        type="text"
-        placeholder="Nhập tên phim..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
+    <>
+      <div className="search-input">
+          <input
+          type="text"
+          placeholder="Search for a movie..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
 
-      <div className="grid">
+      <div className="result">
+        <div className="grid-result">
         {results.map((m) => (
           <MovieCard key={m.id} movie={m} />
         ))}
       </div>
-    </div>
+      </div>
+    </>
   );
 }
