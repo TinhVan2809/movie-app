@@ -90,4 +90,19 @@ app.get("/api/now-playing", async (req, res) => {
   }
 });
 
+//up coming
+app.get("/api/up-coming", async (req, res) => {
+  try{
+    const resp = await axios.get(`${API}/movie/upcoming`, {
+      params: { api_key: process.env.TMDB_API_KEY, 
+        language: 'en-US'
+      },
+    });
+    res.json(resp.data);
+  } catch(err) {
+    console.error("Error fetching upcoming movies: ", err.response?.data || err.message);
+    res.status(500).json({ error: "Cannot load upcoming movies"});
+  } 
+});
+
 app.listen(5000, () => console.log("Server chạy tại http://localhost:5000"));
