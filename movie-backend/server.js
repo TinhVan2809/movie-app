@@ -42,7 +42,7 @@ app.get("/api/search", async (req, res) => {
     });
     res.json(resp.data);
   } catch (err) {
-     console.log("❌ Trending error:", err.response?.data);
+     console.log("Trending error:", err.response?.data);
     res.status(500).json({ error: "Search error" });
   }
 });

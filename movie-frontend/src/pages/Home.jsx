@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import MovieCard from "../components/MovieCard";
 import Slideshow from "../components/Slideshow";
 import { getTrending, getPopular, getTopRated, getNowPlaying, getUpComing } from "../api/movieApi";
 
 import {getTvPopular, getTvTopRated, getTvAir} from "../api/movieApi";
+import MoviesPoster from "../components/PosterMovies";
+import TvShowPoster from "../components/PosterTvShows";
 
 export default function Home() {
   //MOVIES
@@ -49,8 +52,12 @@ export default function Home() {
   const filters = ["Today", "This Week"];
 
   return (
+    
     <>
     {/* MOVIES */}
+    
+    <MoviesPoster m={upComing} />
+    
     <div className="movie-container">
       <div className="movie-content slideShow">
         <div className="title">
@@ -142,6 +149,7 @@ export default function Home() {
     </div>
 
     {/* TV SHOWS */}
+    <TvShowPoster />
 
     <div className="tvshow-container">
         <div className="tv-card">
