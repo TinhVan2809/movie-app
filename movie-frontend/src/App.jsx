@@ -7,6 +7,7 @@ import './styles/Slideshow.css'
 import './styles/MovieCard.css'
 import './styles/Footer.css'
 import './styles/Search.css'
+import './styles/TvShowCard.css'
 
 import Home from "./pages/Home";
 import Search from "./pages/SearchResult";

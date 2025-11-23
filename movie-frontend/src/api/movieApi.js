@@ -9,6 +9,6 @@ export const getTopRated = () => axios.get(`${API}/top-rated`);
 export const getNowPlaying =() => axios.get(`${API}/now-playing`);
 export const getUpComing = () => axios.get(`${API}/up-coming`);
 
-export const getTvPopular = () => axios.get(`${API}/tv/popular`);
-export const getTvTopRated = () => axios.get(`${API}/tv/top-rated`);
-export const getTvAir = () => axios.get(`${API}/tv/on-the-air`);
+export const getTvPopular = () => axios.get(`${API}/tv/tv-popular`);
+export const getTvTopRated = () => axios.get(`${API}/tv/tv-top-rated`);
+export const getTvAir = () => axios.get(`${API}/tv/tv-on-the-air`);

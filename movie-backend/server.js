@@ -111,9 +111,8 @@ app.get("/api/up-coming", async (req, res) => {
 });
 
 // tv show - POPPULAR
-app.get("/api/tv/popular", async (req, res) => { // Đổi tên route cho rõ ràng
+app.get("/api/tv/tv-popular", async (req, res) => { 
   try{
-    // 1. Sửa endpoint thành tv/popular
     const resp = await axios.get(`${API}/tv/popular`, {
       params: { 
         api_key: process.env.TMDB_API_KEY, 
@@ -123,15 +122,13 @@ app.get("/api/tv/popular", async (req, res) => { // Đổi tên route cho rõ r�
     res.json(resp.data);
   } catch(err) {
     console.error("Error fetching Popular TV Shows: ", err.response?.data || err.message);
-    // 2. Sửa lại thông báo lỗi cho đúng
     res.status(500).json({ error: "Cannot load popular TV shows"});
   } 
 });
 
 // tv show - TOP RATED
-app.get("/api/tv/top-rated", async (req, res) => { // Đổi tên route cho rõ ràng
+app.get("/api/tv/tv-top-rated", async (req, res) => { 
   try{
-    // 1. Sửa endpoint thành tv/popular
     const resp = await axios.get(`${API}/tv/top_rated`, {
       params: { 
         api_key: process.env.TMDB_API_KEY, 
@@ -141,15 +138,13 @@ app.get("/api/tv/top-rated", async (req, res) => { // Đổi tên route cho rõ 
     res.json(resp.data);
   } catch(err) {
     console.error("Error fetching Top Rated TV Shows: ", err.response?.data || err.message);
-    // 2. Sửa lại thông báo lỗi cho đúng
     res.status(500).json({ error: "Cannot load Top Rated TV shows"});
   } 
 });
 
 //tv show - ON THE AIR
-app.get("/api/tv/on-the-air", async (req, res) => { // Đổi tên route cho rõ ràng
+app.get("/api/tv/tv-on-the-air", async (req, res) => { 
   try{
-    // 1. Sửa endpoint thành tv/popular
     const resp = await axios.get(`${API}/tv/on_the_air`, {
       params: { 
         api_key: process.env.TMDB_API_KEY, 
@@ -159,7 +154,6 @@ app.get("/api/tv/on-the-air", async (req, res) => { // Đổi tên route cho rõ
     res.json(resp.data);
   } catch(err) {
     console.error("Error fetching On The Air TV Shows: ", err.response?.data || err.message);
-    // 2. Sửa lại thông báo lỗi cho đúng
     res.status(500).json({ error: "Cannot load On The Air TV shows"});
   } 
 });

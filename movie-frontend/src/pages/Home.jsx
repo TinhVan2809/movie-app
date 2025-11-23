@@ -40,7 +40,12 @@ export default function Home() {
     getTrending(timeWindow).then((res) => setTrending(res.data?.results || []));
   }, [trendingFilter]);
 
+
+//render movies card
   const renderMovieCard = (movie) => <MovieCard key={movie.id} movie={movie} />;
+
+  const img = "https://image.tmdb.org/t/p/w300";
+//filters for trending
   const filters = ["Today", "This Week"];
 
   return (
@@ -92,7 +97,7 @@ export default function Home() {
 
       <div className="movie-content slideShow">
         <div className="title">
-          <h2>Top Rated <i className="ri-arrow-right-wide-line"></i></h2>
+          <h2>Top Rated Movies<i className="ri-arrow-right-wide-line"></i></h2>
         </div>
         <Slideshow
           items={topRated}
@@ -107,7 +112,7 @@ export default function Home() {
 
       <div className="movie-content slideShow">
         <div className="title">
-          <h2>Now Playing <i className="ri-arrow-right-wide-line"></i></h2>
+          <h2>Now Playing Movies <i className="ri-arrow-right-wide-line"></i></h2>
         </div>
         <Slideshow
           items={nowPlaying}
@@ -122,7 +127,7 @@ export default function Home() {
 
        <div className="movie-content slideShow">
         <div className="title">
-          <h2>Upcoming <i className="ri-arrow-right-wide-line"></i></h2>
+          <h2>Upcoming Movies <i className="ri-arrow-right-wide-line"></i></h2>
         </div>
         <Slideshow
           items={upComing}
@@ -139,7 +144,93 @@ export default function Home() {
     {/* TV SHOWS */}
 
     <div className="tvshow-container">
-          
+        <div className="tv-card">
+          <div className="tv-header">
+            <div className="title"><p>TV Shows Popular <i className="ri-arrow-right-wide-line"></i></p>
+              <ul>
+                <li>Lastes</li>
+                <li>This Week</li>
+                <li>2025</li>
+              </ul>
+            </div>
+            <div className="tv-header-btn">
+              <div className="btn">See More <button className="btn-submit"><i className="ri-arrow-right-s-line"></i></button></div>
+              <div className="btn">Ramdom <button className="btn-submit"><i className="ri-arrow-right-s-line"></i></button></div>
+            </div>
+          </div>
+          <div className="tv-card-content">
+            {tvPopular.map((tv) => (
+              <div className="card" key={tv.id}>
+                        <img src={img + tv.poster_path} alt={tv.name} />
+                    <div className="card-title">
+                        <p>{tv.name}</p>
+                    </div>
+                    <div className="card-vote">
+                        <span>{tv.vote_average} <i className="ri-star-fill"></i></span>
+                    </div>
+                </div>
+        ))}
+          </div>
+        </div>
+
+        <div className="tv-card">
+          <div className="tv-header">
+            <div className="title"><p>TV Shows Popular<i className="ri-arrow-right-wide-line"></i> </p>
+              <ul>
+                <li>Lastes</li>
+                <li>This Week</li>
+                <li>2025</li>
+              </ul>
+            </div>
+            <div className="tv-header-btn">
+              <div className="btn">See More <button className="btn-submit"><i className="ri-arrow-right-s-line"></i></button></div>
+              <div className="btn">Ramdom <button className="btn-submit"><i className="ri-arrow-right-s-line"></i></button></div>
+              
+            </div>
+          </div>
+          <div className="tv-card-content">
+            {tvTopRated.map((tv) => (
+              <div className="card" key={tv.id}>
+                        <img src={img + tv.poster_path} alt={tv.name} />
+                    <div className="card-title">
+                       <p>{tv.name}</p>
+                    </div>
+                    <div className="card-vote">
+                        <span>{tv.vote_average} <i className="ri-star-fill"></i></span>
+                    </div>
+                </div>
+        ))}
+          </div>
+        </div>
+
+        <div className="tv-card">
+          <div className="tv-header">
+            <div className="title"><p>TV Shows Popular <i className="ri-arrow-right-wide-line"></i></p>
+              <ul>
+                <li>Lastes</li>
+                <li>This Week</li>
+                <li>2025</li>
+              </ul>
+            </div>
+            <div className="tv-header-btn">
+              <div className="btn">See More <button className="btn-submit"><i className="ri-arrow-right-s-line"></i></button></div>
+              <div className="btn">Ramdom <button className="btn-submit"><i className="ri-arrow-right-s-line"></i></button></div>
+            </div>
+          </div>
+          <div className="tv-card-content">
+            {tvAir.map((tv) => (
+              <div className="card" key={tv.id}>
+                        <img src={img + tv.poster_path} alt={tv.name} />
+                    <div className="card-title">
+                        <p>{tv.name}</p>
+                    </div>
+                    <div className="card-vote">
+                       <span>{tv.vote_average}<i className="ri-star-fill"></i> </span>
+                    </div>
+                </div>
+            ))}
+              </div>
+        </div>
     </div>
 
     </>

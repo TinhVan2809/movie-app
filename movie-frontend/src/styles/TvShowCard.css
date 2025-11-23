@@ -1,0 +1,186 @@
+:root {
+  --font-family: "Roboto", sans-serif;
+
+  --color: #272722;
+  --background-color: #ffffff;
+
+  --background-btn-seeMore: #272727;
+  --background-btn-ramdom: rgba(0, 0, 255, 0.656);
+
+  --font-synthesis: none;
+  --text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.tvshow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.tvshow-container .tv-card .tv-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tvshow-container .tv-card .tv-header .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.tvshow-container .tv-card .tv-header .title > p {
+    font-size: 18px;
+    font-weight: 550;
+    color: var(--color);
+}
+
+.tvshow-container .tv-card .tv-header .title > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tvshow-container .tv-card .tv-header .title > ul > li {
+    list-style: none;
+    cursor: pointer;
+    background-color: var(--background-btn-seeMore);
+    color: var(--text);
+    padding: 5px 8px;
+    border-radius: 30px;
+    font-size: 14px;
+    transition: all .2s;
+}
+
+.tvshow-container .tv-card .tv-header .title > ul > li:hover {
+    background-color: var(--background-btn-ramdom);
+}
+
+.tvshow-container .tv-card .tv-header .tv-header-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tvshow-container .tv-card .tv-header .tv-header-btn .btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.093);
+    padding: 5px;
+    padding-left: 25px;
+    border-radius: 20px;
+    font-size: 14px;
+    width: fit-content;
+    transition: all 0.375s;
+    cursor: pointer;
+}
+
+.tvshow-container .tv-card .tv-header .tv-header-btn .btn:hover {
+    background-color: rgba(0, 0, 0, 0.093);
+}
+
+.tvshow-container .tv-card .tv-header .tv-header-btn .btn:hover  button.btn-submit{
+    background-color: #272727;
+}
+
+.tvshow-container .tv-card .tv-header .tv-header-btn .btn > button {
+    padding: 7px;
+    border-radius: 20px;
+    background-color: var(--background-btn-ramdom);
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.375s;
+}
+
+.tvshow-container .tv-card {
+    width: 100%;
+    padding: 0 4rem;
+}
+
+.tvshow-container .tv-card .tv-card-content {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    overflow: auto;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1rem;
+}
+
+.tvshow-container .tv-card .tv-card-content::-webkit-scrollbar{
+    height: 8px;
+}
+
+.tvshow-container .tv-card .tv-card-content::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 0, 0, 0.093);
+    border-radius: 30px;
+}
+
+.tvshow-container .tv-card .tv-card-content::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.tvshow-container .tv-card .tv-card-content .card {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+}
+
+.tvshow-container .tv-card .tv-card-content .card > img {
+    height: 100%;
+    width: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.tvshow-container .tv-card .tv-card-content .card .card-title{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tvshow-container .tv-card .tv-card-content .card .card-title > p{
+    color: var(--text);
+    font-weight: 550;
+    font-size: 18px;
+}
+
+.tvshow-container .tv-card .tv-card-content .card .card-vote{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 5px;
+    background-color: rgba(0, 0, 0, 0.299);
+    border-radius: 0 0 0 10px;
+}
+
+.tvshow-container .tv-card .tv-card-content .card .card-vote > span {
+    color: #f0e511;
+    font-size: 14px;
+}
