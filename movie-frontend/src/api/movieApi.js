@@ -12,3 +12,8 @@ export const getUpComing = () => axios.get(`${API}/up-coming`);
 export const getTvPopular = () => axios.get(`${API}/tv/tv-popular`);
 export const getTvTopRated = () => axios.get(`${API}/tv/tv-top-rated`);
 export const getTvAir = () => axios.get(`${API}/tv/tv-on-the-air`);
+
+//trailer 
+export const getTrailerNowPlaying = () => axios.get(`${API}/trailers/latest`);
+export const getTrailerPopular = () => axios.get(`${API}/trailers/latest-popular`);
+export const getTrailerTopRated = () => axios.get(`${API}/trailers/latest-top-rated`);

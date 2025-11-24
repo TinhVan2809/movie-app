@@ -34,8 +34,8 @@ export default function MoviesPoster({m}) {
                     ))}
                 </div>
                 <div className="poster-movies-button">
-                    <p>Lorem ipsum dolor sit amet Lorem, ipsum dolor. Lorem, ipsum dolor lorem</p>
-                    <button>Lorem</button>
+                    <p>Subscribe to the Premium plan to enjoy unlimited movies. </p>
+                    <button><img src="/icons8-p-50.png"  />remium</button>
                 </div>
                 <div className="item">
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, harum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem?</p>

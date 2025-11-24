@@ -8,6 +8,8 @@ import {getTvPopular, getTvTopRated, getTvAir} from "../api/movieApi";
 import MoviesPoster from "../components/PosterMovies";
 import TvShowPoster from "../components/PosterTvShows";
 
+import { getTrailerNowPlaying, getTrailerTopRated, getTrailerPopular } from "../api/movieApi";
+
 export default function Home() {
   //MOVIES
   const [trending, setTrending] = useState([]);
@@ -20,6 +22,11 @@ export default function Home() {
   const [tvPopular, setTvPopular] = useState([]);
   const [tvTopRated, setTvTopRated] = useState([]);
   const [tvAir, setTvAir] = useState([]);
+
+  //Trailers
+  const [trailerNowPlaying, setTrailerNowPlaying] = useState([]);
+  const [trailerPopular, setTrailerPopular] = useState([]);
+  const [trailerTopRated, setTrailerTopRated] = useState([]);
 
   const [trendingFilter, setTrendingFilter] = useState("Today");
 
@@ -35,6 +42,11 @@ export default function Home() {
     getTvPopular().then((res) => setTvPopular(res.data?.results || []));
     getTvTopRated().then((res) => setTvTopRated(res.data?.results || []));
     getTvAir().then((res) => setTvAir(res.data?.results || []));
+
+    //TRAILERS
+    getTrailerNowPlaying().then((res) => setTrailerNowPlaying(res.data || []));
+    getTrailerPopular().then((res) => setTrailerPopular(res.data || []));
+    getTrailerTopRated().then((res) => setTrailerTopRated(res.data || []));
 
   }, []);
 
@@ -57,6 +69,7 @@ export default function Home() {
     {/* MOVIES */}
     
     <MoviesPoster m={upComing} />
+
     
     <div className="movie-container">
       <div className="movie-content slideShow">
@@ -87,6 +100,29 @@ export default function Home() {
         </div>
       </div>
 
+      {/* TRAILER POPULAR */}
+        <div className="trailer-lastest trailer-popular">
+          <div className="trailer-title">
+            <h2>Watch Trailers <i className="ri-arrow-right-wide-line"></i> Popular</h2>
+          </div>
+          <div className="trailers-container">
+            {trailerPopular.slice(0, 10).map((trailer) => (
+              <div className="trailer-card" key={trailer.movie_id}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${trailer.trailer_key}`}
+                  title={trailer.trailer_name}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+                <div className="trailer-card-title">
+                  <p>{trailer.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       <div className="movie-content slideShow">
         <div className="title">
           <h2>Popular Movies <i className="ri-arrow-right-wide-line"></i></h2>
@@ -102,6 +138,27 @@ export default function Home() {
         </div>
       </div>
 
+      {/* TRAILER TOP RATED */}
+        <div className="trailer-lastest trailer-top-rated">
+          <div className="trailer-title">
+            <h2>Watch Trailers <i className="ri-arrow-right-wide-line"></i> Top Rated</h2>
+          </div>
+          <div className="trailers-container">
+            {trailerTopRated.slice(0, 10).map((trailer) => (
+              <div className="trailer-card" key={trailer.movie_id}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${trailer.trailer_key}`}
+                  title={trailer.trailer_name}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+                <p>{trailer.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
       <div className="movie-content slideShow">
         <div className="title">
           <h2>Top Rated Movies<i className="ri-arrow-right-wide-line"></i></h2>
@@ -116,6 +173,27 @@ export default function Home() {
           <button className="btn-ramdom">Ramdom Top Rated?</button>
         </div>
       </div>
+
+      {/* TRAILER NOW PLAYING */}
+        <div className="trailer-lastest trailer-now-playing">
+          <div className="trailer-title">
+            <h2>Watch Trailers <i className="ri-arrow-right-wide-line"></i> Now Playing</h2>
+          </div>
+          <div className="trailers-container">
+            {trailerNowPlaying.slice(0, 10).map((trailer) => (
+              <div className="trailer-card" key={trailer.movie_id}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${trailer.trailer_key}`}
+                  title={trailer.trailer_name}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+                <p>{trailer.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
       <div className="movie-content slideShow">
         <div className="title">
@@ -183,7 +261,7 @@ export default function Home() {
 
         <div className="tv-card">
           <div className="tv-header">
-            <div className="title"><p>TV Shows Popular<i className="ri-arrow-right-wide-line"></i> </p>
+            <div className="title"><p>TV Shows Top Rated<i className="ri-arrow-right-wide-line"></i> </p>
               <ul>
                 <li>Lastes</li>
                 <li>This Week</li>
@@ -213,7 +291,7 @@ export default function Home() {
 
         <div className="tv-card">
           <div className="tv-header">
-            <div className="title"><p>TV Shows Popular <i className="ri-arrow-right-wide-line"></i></p>
+            <div className="title"><p>Now Playing <i className="ri-arrow-right-wide-line"></i></p>
               <ul>
                 <li>Lastes</li>
                 <li>This Week</li>

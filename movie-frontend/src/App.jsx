@@ -10,6 +10,7 @@ import './styles/Search.css'
 import './styles/TvShowCard.css'
 import './styles/PosterMovies.css'
 import './styles/PosterTvShow.css'
+import './styles/Traiers.css'
 
 import Home from "./pages/Home";
 import Search from "./pages/SearchResult";

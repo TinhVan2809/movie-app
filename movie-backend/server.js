@@ -142,7 +142,8 @@ app.get("/api/tv/tv-top-rated", async (req, res) => {
   } 
 });
 
-//tv show - ON THE AIR
+// tv show - ON THE AIR
+
 app.get("/api/tv/tv-on-the-air", async (req, res) => { 
   try{
     const resp = await axios.get(`${API}/tv/on_the_air`, {
@@ -153,9 +154,324 @@ app.get("/api/tv/tv-on-the-air", async (req, res) => {
     });
     res.json(resp.data);
   } catch(err) {
+
     console.error("Error fetching On The Air TV Shows: ", err.response?.data || err.message);
     res.status(500).json({ error: "Cannot load On The Air TV shows"});
   } 
+
 });
+
+
+
+// Latest Trailers - nowplaying
+
+app.get("/api/trailers/latest", async (req, res) => {
+
+  try {
+
+    // 1. Lấy danh sách phim đang chiếu
+
+    const moviesResp = await axios.get(`${API}/movie/now_playing`, {
+
+      params: { 
+
+        api_key: process.env.TMDB_API_KEY,
+
+        language: 'en-US'
+
+      },
+
+    });
+
+
+
+    const movies = moviesResp.data.results;
+
+
+
+    // 2. Tạo một mảng các promise để lấy video cho mỗi phim
+
+    const videoPromises = movies.map(movie => 
+
+      axios.get(`${API}/movie/${movie.id}/videos`, {
+
+        params: { api_key: process.env.TMDB_API_KEY },
+
+      })
+
+    );
+
+
+
+    // 3. Thực thi tất cả promise song song
+
+    const videoResponses = await Promise.all(videoPromises);
+
+
+
+    // 4. Lọc ra trailer và làm phẳng mảng kết quả
+
+    const latestTrailers = videoResponses.flatMap(videoResp => {
+
+      const movie = movies.find(m => m.id === videoResp.data.id);
+
+      if (!movie) return [];
+
+
+
+      const videos = videoResp.data.results;
+
+      const trailer = videos.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+
+      
+
+      return trailer ? [{
+
+          movie_id: movie.id,
+
+          title: movie.title,
+
+          poster_path: movie.poster_path,
+
+          trailer_key: trailer.key,
+
+          trailer_name: trailer.name,
+
+          published_at: trailer.published_at
+
+      }] : [];
+
+    });
+
+    
+
+    // Sắp xếp các trailer theo ngày xuất bản để lấy trailer mới nhất
+
+    latestTrailers.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+
+
+
+    res.json(latestTrailers);
+
+
+
+  } catch (err) {
+
+    console.error("Error fetching latest trailers: ", err.response?.data || err.message);
+
+    res.status(500).json({ error: "Cannot load latest trailers" });
+
+  }
+
+});
+
+
+// Latest Trailers - popular
+
+app.get("/api/trailers/latest-popular", async (req, res) => {
+
+  try {
+
+    // 1. Lấy danh sách phim đang chiếu
+
+    const moviesResp = await axios.get(`${API}/movie/popular`, {
+
+      params: { 
+
+        api_key: process.env.TMDB_API_KEY,
+
+        language: 'en-US'
+
+      },
+
+    });
+
+
+
+    const movies = moviesResp.data.results;
+
+
+
+    // 2. Tạo một mảng các promise để lấy video cho mỗi phim
+
+    const videoPromises = movies.map(movie => 
+
+      axios.get(`${API}/movie/${movie.id}/videos`, {
+
+        params: { api_key: process.env.TMDB_API_KEY },
+
+      })
+
+    );
+
+
+
+    // 3. Thực thi tất cả promise song song
+
+    const videoResponses = await Promise.all(videoPromises);
+
+
+
+    // 4. Lọc ra trailer và làm phẳng mảng kết quả
+
+    const latestTrailers = videoResponses.flatMap(videoResp => {
+
+      const movie = movies.find(m => m.id === videoResp.data.id);
+
+      if (!movie) return [];
+
+
+
+      const videos = videoResp.data.results;
+
+      const trailer = videos.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+
+      
+
+      return trailer ? [{
+
+          movie_id: movie.id,
+
+          title: movie.title,
+
+          poster_path: movie.poster_path,
+
+          trailer_key: trailer.key,
+
+          trailer_name: trailer.name,
+
+          published_at: trailer.published_at
+
+      }] : [];
+
+    });
+
+    
+
+    // Sắp xếp các trailer theo ngày xuất bản để lấy trailer mới nhất
+
+    latestTrailers.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+
+
+
+    res.json(latestTrailers);
+
+
+
+  } catch (err) {
+
+    console.error("Error fetching latest trailers: ", err.response?.data || err.message);
+
+    res.status(500).json({ error: "Cannot load latest trailers" });
+
+  }
+
+});
+
+
+// Latest Trailers - Top_Rated
+
+app.get("/api/trailers/latest-top-rated", async (req, res) => {
+
+  try {
+
+    // 1. Lấy danh sách phim đang chiếu
+
+    const moviesResp = await axios.get(`${API}/movie/top_rated`, {
+
+      params: { 
+
+        api_key: process.env.TMDB_API_KEY,
+
+        language: 'en-US'
+
+      },
+
+    });
+
+
+
+    const movies = moviesResp.data.results;
+
+
+
+    // 2. Tạo một mảng các promise để lấy video cho mỗi phim
+
+    const videoPromises = movies.map(movie => 
+
+      axios.get(`${API}/movie/${movie.id}/videos`, {
+
+        params: { api_key: process.env.TMDB_API_KEY },
+
+      })
+
+    );
+
+
+
+    // 3. Thực thi tất cả promise song song
+
+    const videoResponses = await Promise.all(videoPromises);
+
+
+
+    // 4. Lọc ra trailer và làm phẳng mảng kết quả
+
+    const latestTrailers = videoResponses.flatMap(videoResp => {
+
+      const movie = movies.find(m => m.id === videoResp.data.id);
+
+      if (!movie) return [];
+
+
+
+      const videos = videoResp.data.results;
+
+      const trailer = videos.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+
+      
+
+      return trailer ? [{
+
+          movie_id: movie.id,
+
+          title: movie.title,
+
+          poster_path: movie.poster_path,
+
+          trailer_key: trailer.key,
+
+          trailer_name: trailer.name,
+
+          published_at: trailer.published_at
+
+      }] : [];
+
+    });
+
+    
+
+    // Sắp xếp các trailer theo ngày xuất bản để lấy trailer mới nhất
+
+    latestTrailers.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+
+
+
+    res.json(latestTrailers);
+
+
+
+  } catch (err) {
+
+    console.error("Error fetching latest trailers: ", err.response?.data || err.message);
+
+    res.status(500).json({ error: "Cannot load latest trailers" });
+
+  }
+
+});
+
+
+
 
 app.listen(5000, () => console.log("Server chạy tại http://localhost:5000"));

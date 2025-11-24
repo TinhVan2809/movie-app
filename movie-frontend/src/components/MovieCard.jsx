@@ -3,7 +3,7 @@ export default function MovieCard({ movie }) {
 
   return (
     <div className="movie-card">
-      <img src={img + movie.poster_path} alt={movie.title} />
+      <img src={img + movie.poster_path} alt={movie.title} title={movie.title} />
       <div className="movie-card-title">
         <h3>{movie.title}</h3>
       </div>
