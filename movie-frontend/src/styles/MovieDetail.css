@@ -1,0 +1,194 @@
+section.movie-detail-container{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px; /* Thêm chiều cao để thấy được ảnh nền */
+}
+
+.backdrop {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Đưa ảnh nền ra sau nội dung */
+    /* opacity: 0.3;  */
+    box-shadow: inset 0 -600px 100px rgba(0, 0, 0, 0.667),
+                inset 0 -70px 50px #00000078,
+                inset 90px 0 50px #00000078;
+}
+
+.detail-content {
+    position: relative; /* Đảm bảo nội dung nằm trên backdrop */
+    z-index: 1;
+    display: flex;
+    padding: 2rem 8rem;
+    width: 100%;
+    height: 100%;
+    gap: 2.5rem;
+}
+
+.detail-content  .detail-content-l {
+    height: 100%;
+}
+
+.detail-content  .detail-content-l > img {
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.detail-content .detail-content-r {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1rem 0;
+    gap: 1rem;
+}
+
+.detail-content .detail-content-r .head {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.detail-content .detail-content-r .head  .title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+    width: 900px;
+}
+
+.detail-content .detail-content-r .head  .title > h3 {
+    font-size: 35.2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0;
+    color: #ffffff;
+}
+
+.detail-content .detail-content-r .head  .title > span {
+    font-size: 35.2px;
+    color: #ffffff;
+}
+
+.detail-content .detail-content-r .head  .genres {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.detail-content .detail-content-r .head  .genres .genres-list > i,
+ .detail-content .detail-content-r .head  .genres .location > i{
+    color: #fff;
+    background-color: #000;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 11px;
+}
+
+.detail-content .detail-content-r .head  .genres .location,
+.detail-content .detail-content-r .head  .genres .genres-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.detail-content .detail-content-r .head  .genres .location > span,
+.detail-content .detail-content-r .head  .genres .genres-list > span {
+    font-size: 14px;
+    font-weight: 550;
+    cursor: pointer;
+    transition: all 0.375s;
+    color: #ffffff;
+    margin-right: 10px;
+} 
+
+.detail-content .detail-content-r .head  .genres .location > span:hover,
+.detail-content .detail-content-r .head  .genres .genres-list > span:hover {
+    color: rgba(171, 142, 142, 0.592);
+}
+
+.detail-content .detail-content-r .detail-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.detail-content .detail-content-r .detail-btn > button {
+    padding: 9px 13px;
+    border-radius: 20px;
+    background-color: rgb(3 37 65);
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.detail-content .detail-content-r .detail-btn > button:hover {
+    background-color: #ffffff;
+    color: #272727;
+}
+
+.detail-content .detail-content-r .overview {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.detail-content .detail-content-r .overview > p:first-child{
+    font-size: 24px;
+    color: #f1f1f1cd;
+}
+
+.detail-content .detail-content-r .overview > p:last-child {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.detail-content .detail-content-r .vote-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.detail-content .detail-content-r .vote-container > p,
+.detail-content .detail-content-r .vote-container  >span {
+    color: #ffffff;
+}
+
+.detail-content .detail-content-r .vote-container > p:first-child {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.detail-content .detail-content-r > hr {
+    width: 100%;
+    border-radius: 30px;
+    border-color: #f1f1f163;
+}

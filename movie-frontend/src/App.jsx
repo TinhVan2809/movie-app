@@ -11,6 +11,7 @@ import './styles/TvShowCard.css'
 import './styles/PosterMovies.css'
 import './styles/PosterTvShow.css'
 import './styles/Traiers.css'
+import './styles/MovieDetail.css'
 
 import Home from "./pages/Home";
 import Search from "./pages/SearchResult";
@@ -18,6 +19,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import History from "./pages/History";
 import About from "./pages/About";
+import MovieDetail from "./pages/MovieDetail";
 
 export default function App() {
   return (
@@ -31,6 +33,7 @@ export default function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/history" element={<History />} />
         <Route path="/aboutUs" element={<About />} />
+        <Route path="/movieDetail/:id" element={<MovieDetail />} />
        </Routes>
 
       {/* FOOTER */}

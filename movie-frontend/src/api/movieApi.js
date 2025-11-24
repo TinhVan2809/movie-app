@@ -8,6 +8,8 @@ export const searchMovie = (q) => axios.get(`${API}/search?query=${q}`);
 export const getTopRated = () => axios.get(`${API}/top-rated`);
 export const getNowPlaying =() => axios.get(`${API}/now-playing`);
 export const getUpComing = () => axios.get(`${API}/up-coming`);
+export const getMovieDetail = (id) => axios.get(`${API}/movie/${id}`);
+export const getMovieCredits = (id) => axios.get(`${API}/movie/${id}/credits`);
 
 export const getTvPopular = () => axios.get(`${API}/tv/tv-popular`);
 export const getTvTopRated = () => axios.get(`${API}/tv/tv-top-rated`);

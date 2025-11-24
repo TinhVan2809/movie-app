@@ -1,60 +1,28 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import MovieCard from "../components/MovieCard";
 import Slideshow from "../components/Slideshow";
-import { getTrending, getPopular, getTopRated, getNowPlaying, getUpComing } from "../api/movieApi";
-
-import {getTvPopular, getTvTopRated, getTvAir} from "../api/movieApi";
+import { getTrending } from "../api/movieApi";
 import MoviesPoster from "../components/PosterMovies";
 import TvShowPoster from "../components/PosterTvShows";
-
-import { getTrailerNowPlaying, getTrailerTopRated, getTrailerPopular, getTrailerUpcoming } from "../api/movieApi";
+import { useData } from "./DataContext";
 
 export default function Home() {
-  //MOVIES
-  const [trending, setTrending] = useState([]);
-  const [popular, setPopular] = useState([]);
-  const [topRated, setTopRated] = useState([]);
-  const [nowPlaying, setNowPlaying] = useState([]);
-  const [upComing, setUpComing] = useState([]);
-
-  //TV SHOW
-  const [tvPopular, setTvPopular] = useState([]);
-  const [tvTopRated, setTvTopRated] = useState([]);
-  const [tvAir, setTvAir] = useState([]);
-
-  //Trailers
-  const [trailerNowPlaying, setTrailerNowPlaying] = useState([]);
-  const [trailerPopular, setTrailerPopular] = useState([]);
-  const [trailerTopRated, setTrailerTopRated] = useState([]);
-  const [trailerUpcoming, setTrailerUpcoming] = useState([]);
+  // Lấy dữ liệu và hàm setter từ DataContext
+  const {
+    trending, setTrending,
+    popular, topRated, nowPlaying, upComing,
+    tvPopular, tvTopRated, tvAir,
+    trailerNowPlaying, trailerPopular, trailerTopRated, trailerUpcoming
+  } = useData();
 
   const [trendingFilter, setTrendingFilter] = useState("Today");
 
   useEffect(() => {
-    //MOVIES
-    getTrending('day').then((res) => setTrending(res.data?.results || []));
-    getPopular().then((res) => setPopular(res.data?.results || []));
-    getTopRated().then((res) => setTopRated(res.data?.results || []));
-    getNowPlaying().then((res) => setNowPlaying(res.data?.results || []));
-    getUpComing().then((res) => setUpComing(res.data?.results || []));
-
-    //TV SHOWS
-    getTvPopular().then((res) => setTvPopular(res.data?.results || []));
-    getTvTopRated().then((res) => setTvTopRated(res.data?.results || []));
-    getTvAir().then((res) => setTvAir(res.data?.results || []));
-
-    //TRAILERS
-    getTrailerNowPlaying().then((res) => setTrailerNowPlaying(res.data || []));
-    getTrailerPopular().then((res) => setTrailerPopular(res.data || []));
-    getTrailerTopRated().then((res) => setTrailerTopRated(res.data || []));
-    getTrailerUpcoming().then((res) => setTrailerUpcoming(res.data || []));
-
-  }, []);
-
-  useEffect(() => {
     const timeWindow = trendingFilter === 'Today' ? 'day' : 'week';
-    getTrending(timeWindow).then((res) => setTrending(res.data?.results || []));
+    getTrending(timeWindow).then((res) => {
+      // Cập nhật state trending trong context
+      setTrending(res.data?.results || []);
+    });
   }, [trendingFilter]);
 
 

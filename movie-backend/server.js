@@ -110,6 +110,40 @@ app.get("/api/up-coming", async (req, res) => {
   } 
 });
 
+// Get Movie Detail by ID
+app.get("/api/movie/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const resp = await axios.get(`${API}/movie/${id}`, {
+      params: { 
+        api_key: process.env.TMDB_API_KEY,
+        language: 'en-US'
+      },
+    });
+    res.json(resp.data);
+  } catch (err) {
+    console.error("Error fetching movie details: ", err.response?.data || err.message);
+    res.status(500).json({ error: "Cannot load movie details" });
+  }
+});
+
+// Get Movie Credits by ID
+app.get("/api/movie/:id/credits", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const resp = await axios.get(`${API}/movie/${id}/credits`, {
+      params: { 
+        api_key: process.env.TMDB_API_KEY,
+        language: 'en-US'
+      },
+    });
+    res.json(resp.data);
+  } catch (err) {
+    console.error("Error fetching movie credits: ", err.response?.data || err.message);
+    res.status(500).json({ error: "Cannot load movie credits" });
+  }
+});
+
 // tv show - POPPULAR
 app.get("/api/tv/tv-popular", async (req, res) => { 
   try{
