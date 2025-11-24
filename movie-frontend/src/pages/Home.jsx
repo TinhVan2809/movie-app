@@ -8,7 +8,7 @@ import {getTvPopular, getTvTopRated, getTvAir} from "../api/movieApi";
 import MoviesPoster from "../components/PosterMovies";
 import TvShowPoster from "../components/PosterTvShows";
 
-import { getTrailerNowPlaying, getTrailerTopRated, getTrailerPopular } from "../api/movieApi";
+import { getTrailerNowPlaying, getTrailerTopRated, getTrailerPopular, getTrailerUpcoming } from "../api/movieApi";
 
 export default function Home() {
   //MOVIES
@@ -27,6 +27,7 @@ export default function Home() {
   const [trailerNowPlaying, setTrailerNowPlaying] = useState([]);
   const [trailerPopular, setTrailerPopular] = useState([]);
   const [trailerTopRated, setTrailerTopRated] = useState([]);
+  const [trailerUpcoming, setTrailerUpcoming] = useState([]);
 
   const [trendingFilter, setTrendingFilter] = useState("Today");
 
@@ -47,6 +48,7 @@ export default function Home() {
     getTrailerNowPlaying().then((res) => setTrailerNowPlaying(res.data || []));
     getTrailerPopular().then((res) => setTrailerPopular(res.data || []));
     getTrailerTopRated().then((res) => setTrailerTopRated(res.data || []));
+    getTrailerUpcoming().then((res) => setTrailerUpcoming(res.data || []));
 
   }, []);
 
@@ -153,7 +155,9 @@ export default function Home() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
-                <p>{trailer.title}</p>
+                <div className="trailer-card-title">
+                  <p>{trailer.title}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -189,7 +193,9 @@ export default function Home() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
-                <p>{trailer.title}</p>
+                <div className="trailer-card-title">
+                  <p>{trailer.title}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -209,6 +215,29 @@ export default function Home() {
           <button className="btn-ramdom">Ramdom Now Playing?</button>
         </div>
       </div>
+
+      {/* TRAILER UPCOMING */}
+        <div className="trailer-lastest trailer-up-coming">
+          <div className="trailer-title">
+            <h2>Watch Trailers <i className="ri-arrow-right-wide-line"></i> Upcoming</h2>
+          </div>
+          <div className="trailers-container">
+            {trailerUpcoming.slice(0, 10).map((trailer) => (
+              <div className="trailer-card" key={trailer.movie_id}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${trailer.trailer_key}`}
+                  title={trailer.trailer_name}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+                <div className="trailer-card-title">
+                  <p>{trailer.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
        <div className="movie-content slideShow">
         <div className="title">

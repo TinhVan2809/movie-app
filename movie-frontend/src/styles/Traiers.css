@@ -9,23 +9,30 @@
     gap: 1rem;
 }
 
-.traier-popular, .trailer-top-rated, .trailer-now-playing {
+.trailer-popular, .trailer-top-rated, .trailer-now-playing, .trailer-up-coming {
     background-size: cover;
-    background-position: center;
+    background-position: 50% !important;
 }
 
 
 .trailer-popular {
     background-image: url(/cin.png);
-    background-position: 50% !important;
 }
 
 .trailer-top-rated {
-    background-image: url(/cinematic_.png);
+    background-image: url(/movieimg1.jpg);
+   background-position: 50% 20% !important ;
 }
 
 .trailer-now-playing {
     background-image: url(/ultra.png);
+     
+}
+
+.trailer-up-coming{
+    background-image: url(/movieimg2.jpg);
+    background-position: 50% 46% !important;  
+     
 }
 
 .trailer-lastest .trailer-title > h2 {
@@ -50,16 +57,13 @@
 }
 
 .trailer-lastest .trailers-container::-webkit-scrollbar-thumb{
-    background-color: rgba(208, 0, 0, 0.889);
+    background-color: rgb(255, 255, 255);
     border-radius: 30px;
 }
 
-.trailer-lastest .trailers-container::-webkit-scrollbar-thumb:hover{
-    background-color: rgb(255, 0, 0);
-}
 
 .trailer-lastest .trailers-container .trailer-card{
-  width: 320px;
+  width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,7 +77,7 @@
 }
 .trailer-lastest .trailers-container .trailer-card .trailer-card-title {
     min-width: 0;
-    width: 100%;
+    width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
