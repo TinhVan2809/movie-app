@@ -29,13 +29,28 @@
 
 .movie-card .movie-card-title {
     position: absolute;
-    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     width: 100%;    
-    height: 30px;
-    padding: 0 10px;
+    height: 100%;
+    padding: 5px;
     min-width: 0;
-     box-shadow: inset 0 -10px 30px 5px rgba(0, 0, 0, 0.9);
+    transition: all 0.375s;
+    flex-wrap: wrap;
 } 
+
+.movie-card .movie-card-title:hover {
+    box-shadow: inset 0 -1000px 100px rgba(0, 0, 0, 0.448);
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-card .movie-card-title:hover h3.movie-card-name {
+    text-overflow: clip;
+    white-space: normal;
+    width: 100%;
+}
 
 .movie-card .movie-card-title h3 {
     color: var(--text);

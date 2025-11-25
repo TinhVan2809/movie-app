@@ -33,7 +33,21 @@ export default function MovieDetail() {
     }
   }, [id]); // Chạy lại effect khi id thay đổi
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return (
+    <>
+      
+<div class="dot-spinner">
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+    <div class="dot-spinner__dot"></div>
+</div>
+    </>
+  );
   if (error) return <div>{error}</div>;
   if (!movie) return null;
 

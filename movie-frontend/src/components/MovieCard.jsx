@@ -8,7 +8,7 @@ export default function MovieCard({ movie }) {
     <div className="movie-card" onClick={() => navigate(`/movieDetail/${movie.id}`)}> 
       <img src={img + movie.poster_path} alt={movie.title} title={movie.title} />
       <div className="movie-card-title">
-        <h3>{movie.title}</h3>
+        <h3 className='movie-card-name'>{movie.title}</h3>
       </div>
       <div className="movie-card-vote">
         <p> {movie.vote_average}<i className="ri-star-fill"></i></p>
