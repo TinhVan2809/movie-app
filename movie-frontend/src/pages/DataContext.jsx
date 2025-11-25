@@ -5,10 +5,10 @@ import {
   getTrailerNowPlaying, getTrailerTopRated, getTrailerPopular, getTrailerUpcoming
 } from '../api/movieApi';
 
-// 1. Tạo Context
+//  Tạo Context
 const DataContext = createContext();
 
-// 2. Tạo Provider component
+//  Tạo Provider component
 export function DataProvider({ children }) {
   // State để lưu trữ dữ liệu
   const [trending, setTrending] = useState([]);
@@ -51,9 +51,11 @@ export function DataProvider({ children }) {
           setTopRated(topRatedRes.data?.results || []);
           setNowPlaying(nowPlayingRes.data?.results || []);
           setUpComing(upComingRes.data?.results || []);
+
           setTvPopular(tvPopularRes.data?.results || []);
           setTvTopRated(tvTopRatedRes.data?.results || []);
           setTvAir(tvAirRes.data?.results || []);
+          
           setTrailerNowPlaying(trailerNowPlayingRes.data || []);
           setTrailerPopular(trailerPopularRes.data || []);
           setTrailerTopRated(trailerTopRatedRes.data || []);
@@ -81,7 +83,7 @@ export function DataProvider({ children }) {
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 }
 
-// 3. Tạo custom hook để sử dụng context dễ dàng hơn
+//  Tạo custom hook để sử dụng context dễ dàng hơn
 export function useData() {
   const context = useContext(DataContext);
   if (context === undefined) {

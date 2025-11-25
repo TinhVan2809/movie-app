@@ -23,7 +23,7 @@ export default function Home() {
       // Cập nhật state trending trong context
       setTrending(res.data?.results || []);
     });
-  }, [trendingFilter]);
+  }, [trendingFilter]); // Chạy lại useEffect khi trending filer thay đổi
 
 
 //render movies card
@@ -38,7 +38,7 @@ export default function Home() {
     <>
     {/* MOVIES */}
     
-    <MoviesPoster m={upComing} />
+    <MoviesPoster m={nowPlaying} />
 
     
     <div className="movie-container">
@@ -224,7 +224,7 @@ export default function Home() {
     </div>
 
     {/* TV SHOWS */}
-    <TvShowPoster />
+    <TvShowPoster tv={tvAir}/>
 
     <div className="tvshow-container">
         <div className="tv-card">

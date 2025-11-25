@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+section.bg-tvshow-container {
+    font-family: "Ubuntu", sans-serif !important;
+}
+
+.bg-tvshow-container {
+    background-image: url(/postertvshow.png);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 600px;
+    padding: 2rem 4rem;
+    margin-top: 3rem;
+}
+
+.bg-tvshow-container .bg-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    height: 100%;
+    padding: 0 2rem;
+}
+
+.bg-tvshow-container .bg-content .left {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100%;
+    width: 1300px;
+    position: relative;
+}
+
+.bg-tvshow-container .bg-content .left > header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 2rem;
+    gap: 2rem;
+}
+
+
+.bg-tvshow-container .bg-content .left > header .header-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bg-tvshow-container .bg-content .left > header .header-title > h3 {
+    font-size: 24px;
+    color: #fff;
+}
+
+.bg-tvshow-container .bg-content .left > header .header-title .links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.bg-tvshow-container .bg-content .left > header .header-title .links > a {
+    font-size: 14px;
+    color: #fff;
+    font-size: 550;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-underline-offset: 3px;
+}
+
+.bg-tvshow-container .bg-content .left > header .header-title .links > a:hover {
+    text-decoration: 1.5px underline #fff;
+}
+
+.bg-tvshow-container .bg-content .left > header .header-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 7px;
+}
+
+.bg-tvshow-container .bg-content .left > header .header-btn > button {
+    padding: 8px 14px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.bg-tvshow-container .bg-content .left > header .header-btn > button:hover{
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+.bg-tvshow-container .bg-content .left > header .header-btn > button.btn1 {
+    background-color: #F9060E;
+}
+
+.bg-tvshow-container .bg-content .left > header .header-btn > button.btn2 {
+    background-color: #000;
+}
+
+.bg-tvshow-container .bg-content .left .header-search {
+    width: 300px;
+    right: 0;
+    position: absolute;
+}
+
+.bg-tvshow-container .bg-content .left .header-search > input {
+    width: 100%;
+    padding: 0.5rem 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 255);
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+}
+
+.bg-tvshow-container .bg-content .left .header-search > input::placeholder{
+    color: #fff;
+}
+
+.bg-tvshow-container .bg-content .left .left-bottom {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bg-tvshow-container .bg-content .left .left-bottom .item {
+    width: 300px;
+    background-color: transparent;
+    border: 0.7px solid #cbccd8a1;
+    border-radius: 18px;
+    padding: 14px 20px;
+    height: 170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.bg-tvshow-container .bg-content .left .left-bottom .item  > p {
+    font-size: 14px;
+    color: #fff;
+}
+
+.bg-tvshow-container .bg-content .left .left-bottom .item > button {
+    width: 100%;
+    padding: 8px 14px;
+    border-radius: 5px;
+    border: none;
+    background-color: #3C14EB;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.375s;
+}
+
+.bg-tvshow-container .bg-content .left .left-bottom .item > button:hover {
+    background-color: #260D96;
+}
+
+
+.bg-tvshow-container .bg-content .right {
+    height: 100%;
+    width: 600px;
+}
+
+.bg-tvshow-container .bg-content .right .list-shows-container{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;  
+    width: 100%;
+    gap: 5px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
+    row-gap: 5px;
+}
+
+
+/* .bg-tvshow-container .bg-content .right .list-shows-container { 
+    scrollbar-width: thin;
+    scrollbar-color: #e4e4e92f transparent;
+} */
+
+.bg-tvshow-container .bg-content .right .list-shows-container::-webkit-scrollbar{
+    width: 6px;
+}
+
+.bg-tvshow-container .bg-content .right .list-shows-container::-webkit-scrollbar-thumb{
+    background-color: #e4e4e92f;
+    border-radius: 5px;
+}
+
+.bg-tvshow-container .bg-content .right .list-shows-container .card {
+    width: 130px;
+    height: 190px;
+    position: relative;
+    cursor: pointer;
+}
+
+.bg-tvshow-container .bg-content .right .list-shows-container .card > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+    transition: all 0.3s ease-in;
+}
+
+.bg-tvshow-container .bg-content .right .list-shows-container .card .title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+    padding: 5px 10px;
+}
+
+.bg-tvshow-container .bg-content .right .list-shows-container .card .title > p {
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet ngang và laptop nhỏ */
+  .bg-tvshow-container  {
+   padding: 2rem;
+  }
+  .bg-tvshow-container .bg-content .left {
+    width: 600px;
+  }
+
+   .bg-tvshow-container .bg-content .left > header {
+    flex-wrap: wrap;
+    position: relative;
+    height: 100px;
+    padding: 0;
+   }
+   
+   .bg-tvshow-container .bg-content .left > header .header-search {
+    bottom: 0;
+    left: 0;
+   }
+
+   .bg-tvshow-container .bg-content .left .left-bottom .item {
+    width: 250px;
+    height: 200px;
+   }
+
+   .bg-tvshow-container .bg-content .right .list-shows-container .card {
+     width: 100px;
+     height: 160px;
+   }
+
+}
+
+@media (max-width: 768px) {
+  /* Dưới 768px: Mobile và Tablet dọc */
+    .bg-tvshow-container{
+      padding: 10px 0;
+    }
+    .bg-tvshow-container .bg-content {
+        padding: 0 ;
+    }
+
+    .bg-tvshow-container .bg-content .left {
+        width: 400px;
+    }
+
+    .bg-tvshow-container .bg-content .left > header {
+        flex-wrap: wrap;
+        padding: 0 20px;
+        position: relative;
+        height: 150px;
+        gap: 0;
+    }
+
+    .bg-tvshow-container .bg-content .left > header .header-search {
+        bottom: 0;
+        left: 0;
+        position: relative;
+    }
+
+    .bg-tvshow-container .bg-content .left .left-bottom {
+        flex-wrap: wrap;
+    }
+
+    .bg-tvshow-container .bg-content .left .left-bottom .item {
+        width: 100%;
+        height: 150px;
+        box-shadow: inset 0 -200px 500px rgba(0, 0, 0, 0.474);
+    }
+
+    .bg-tvshow-container .bg-content .right {
+        width: 300px;
+    }
+
+}

@@ -36,15 +36,15 @@ export default function MovieDetail() {
   if (loading) return (
     <>
       
-<div class="dot-spinner">
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
-    <div class="dot-spinner__dot"></div>
+<div className="dot-spinner">
+    <div className="dot-spinner__dot"></div>
+    <div className="dot-spinner__dot"></div>
+    <div className="dot-spinner__dot"></div>
+    <div className="dot-spinner__dot"></div>
+    <div className="dot-spinner__dot"></div>
+    <div className="dot-spinner__dot"></div>
+    <div className="dot-spinner__dot"></div>
+    <div className="dot-spinner__dot"></div>
 </div>
     </>
   );
@@ -56,7 +56,7 @@ export default function MovieDetail() {
 
   return (
     <>
-    <section className="movie-detail-container">
+    <section className="movie-detail-container" key={movie.id}>
           {/* Sử dụng inline style để đặt ảnh nền động */}
           <div 
             className="backdrop" 
@@ -77,25 +77,26 @@ export default function MovieDetail() {
                     </div>
                     <div className="genres">
                        <div className="genres-list">
-                            <i class="ri-price-tag-3-fill"></i>
+                            <i className="ri-price-tag-3-fill"></i>
                             {movie.genres.map(genre => (
                                 <span key={genre.id} className="genre-tag">{genre.name}</span>
                             ))}
                        </div>
                        <div className="location">
-                             <i class="ri-map-pin-2-fill"></i>
+                             <i className="ri-map-pin-2-fill"></i>
                             {movie.origin_country.map(country => (
-                                <span key={country.name}>{country}</span>
+                                // Thêm key duy nhất cho mỗi phần tử trong danh sách
+                                <span key={country}>{country}</span>
                             ))}
                        </div>
                         
                     </div>
                 </div>
                  <div className="detail-btn">
-                    <button>Play Trailer<i class="ri-play-reverse-large-fill"></i></button>
-                    <button>Add To List<i class="ri-menu-add-line"></i></button>
-                    <button>Watch List<i class="ri-play-list-2-fill"></i></button>
-                    <button>Favorty<i class="ri-heart-fill"></i></button>
+                    <button>Play Trailer<i className="ri-play-reverse-large-fill"></i></button>
+                    <button>Add To List<i className="ri-menu-add-line"></i></button>
+                    <button>Watch List<i className="ri-play-list-2-fill"></i></button>
+                    <button>Favorty<i className="ri-heart-fill"></i></button>
                 </div>
                 <div className="overview">
                     <p>Overview</p>
@@ -105,9 +106,9 @@ export default function MovieDetail() {
                 <hr />
 
                 <div className="vote-container">
-                    <p>{movie.vote_average}<i class="ri-star-fill"></i> / {movie.vote_count} <i class="ri-group-fill"></i></p>
+                    <p>{movie.vote_average}<i className="ri-star-fill"></i> / {movie.vote_count} <i className="ri-group-fill"></i></p>
                     <span>|</span>
-                    <p><i class="ri-timer-2-line"></i> {movie.runtime}m</p>
+                    <p><i className="ri-timer-2-line"></i> {movie.runtime}m</p>
                 </div>
                
             </div>

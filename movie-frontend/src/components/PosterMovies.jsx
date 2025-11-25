@@ -14,7 +14,7 @@ export default function MoviesPoster({m}) {
                     </ul>
                 </div>
                 <div className="search"> 
-                    <div class="form__group field">
+                    <div className="form__group field">
                         <input type="input" className="form__field" placeholder="Name" required="" />
                         <label htmlFor="name" className="form__label">Search for</label>
                         <button>Search</button>
