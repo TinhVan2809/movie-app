@@ -1,12 +1,15 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getTvShowDetail, getTvShowCredits } from '../api/movieApi';
+import { getTvShowDetail, getTvShowCredits, getTvShowVideos } from '../api/movieApi';
 export default function TvShowDetail() {
     const { id } = useParams(); // Lấy id từ URL
     const [tvShow, setTvShow] = useState(null);
     const [creditsTvShow, setCreditsTvShow] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [showTrailer, setShowTrailer] = useState(false);
+    const [trailerKey, setTrailerKey] = useState(null);
+
 
     useEffect(() => {
     const fetchDetails = async () => {
@@ -31,6 +34,24 @@ export default function TvShowDetail() {
       fetchDetails();
     }
   }, [id]); // Chạy lại effect khi id thay đổi
+
+  const handlePlayTrailer = async () => {
+    try {
+      const res = await getTvShowVideos(id);
+      const videos = res.data.results;
+      // Tìm video là 'Trailer' và từ 'YouTube'
+      const officialTrailer = videos.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+      if (officialTrailer) {
+        setTrailerKey(officialTrailer.key);
+        setShowTrailer(true);
+      } else {
+        alert('Trailer not available for this TV show.');
+      }
+    } catch (error) {
+      console.error('Failed to fetch trailer:', error);
+      alert('Could not load trailer.');
+    }
+  };
 
     if (loading) return (
     <>
@@ -92,7 +113,7 @@ export default function TvShowDetail() {
                     </div>
                 </div>
                  <div className="detail-btn">
-                    <button>Play Trailer<i className="ri-play-reverse-large-fill"></i></button>
+                    <button onClick={handlePlayTrailer}>Play Trailer<i className="ri-play-reverse-large-fill"></i></button>
                     <button>Add To List<i className="ri-menu-add-line"></i></button>
                     <button>Watch List<i className="ri-play-list-2-fill"></i></button>
                     <button>Favorty<i className="ri-heart-fill"></i></button>
@@ -126,6 +147,22 @@ export default function TvShowDetail() {
                 </div>
                 ))}
         </div>
+
+        {showTrailer && (
+            <div className="trailer-modal">
+                <div className="trailer-modal-content">
+                    <button className="close-btn" onClick={() => setShowTrailer(false)}>
+                        <i class="ri-close-line"></i>
+                    </button>
+                    <iframe
+                        src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1`}
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
+                </div>
+            </div>
+        )}
     </>
   );
 }

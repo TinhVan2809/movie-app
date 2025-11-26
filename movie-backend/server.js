@@ -127,6 +127,23 @@ app.get("/api/movie/:id", async (req, res) => {
   }
 });
 
+// Get Tv Show Videos by ID
+app.get("/api/tv/:id/videos", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const resp = await axios.get(`${API}/tv/${id}/videos`, {
+      params: { 
+        api_key: process.env.TMDB_API_KEY,
+        language: 'en-US'
+      },
+    });
+    res.json(resp.data);
+  } catch (err) {
+    console.error("Error fetching tv show videos: ", err.response?.data || err.message);
+    res.status(500).json({ error: "Cannot load tv show videos" });
+  }
+});
+
 // Get Movie Credits by ID
 app.get("/api/movie/:id/credits", async (req, res) => {
   try {
