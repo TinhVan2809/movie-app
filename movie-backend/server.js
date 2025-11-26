@@ -196,6 +196,42 @@ app.get("/api/tv/tv-on-the-air", async (req, res) => {
 });
 
 
+// Get Tv Show Detail by ID
+app.get("/api/tv/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const resp = await axios.get(`${API}/tv/${id}`, {
+      params: { 
+        api_key: process.env.TMDB_API_KEY,
+        language: 'en-US'
+      },
+    });
+    res.json(resp.data);
+  } catch (err) {
+    console.error("Error fetching tv show details: ", err.response?.data || err.message);
+    res.status(500).json({ error: "Cannot load tv show details" });
+  }
+});
+
+// GetTv Show Credits by ID
+app.get("/api/tv/:id/credits", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const resp = await axios.get(`${API}/tv/${id}/credits`, {
+      params: { 
+        api_key: process.env.TMDB_API_KEY,
+        language: 'en-US'
+      },
+    });
+    res.json(resp.data);
+  } catch (err) {
+    console.error("Error fetching tv show credits: ", err.response?.data || err.message);
+    res.status(500).json({ error: "Cannot load tv show credits" });
+  }
+});
+
+
+
 
 // Latest Trailers - nowplaying
 

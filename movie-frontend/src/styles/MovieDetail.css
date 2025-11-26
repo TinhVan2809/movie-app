@@ -299,3 +299,50 @@ section.movie-detail-container{
     border-radius: 30px;
     border-color: #f1f1f163;
 }
+
+.cast {
+  display: flex;
+  width: 90%;
+  overflow-x: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 20px auto;
+}
+
+.cast::-webkit-scrollbar{
+  height: 6px;
+}
+
+.cast::-webkit-scrollbar-thumb{
+  background-color: rgba(226, 225, 233, 0.592);
+}
+
+.cast .cast-card{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  width: fit-content;
+  height: 250px;
+  row-gap: 5px;
+}
+
+.cast-card + .cast-card {
+  margin-left: 20px;
+}
+
+.cast .cast-card > img {
+height: 150px;
+border-radius: 10px;
+}
+
+.cast .cast-card p.name {
+  font-size: 14px;
+  
+}
+
+.cast .cast-card p.character {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.667);
+}

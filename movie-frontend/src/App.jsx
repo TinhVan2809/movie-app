@@ -20,6 +20,7 @@ import Footer from "./components/Footer";
 import History from "./pages/History";
 import About from "./pages/About";
 import MovieDetail from "./pages/MovieDetail";
+import TvShowDetail from "./pages/TvShowDetail";
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/history" element={<History />} />
         <Route path="/aboutUs" element={<About />} />
         <Route path="/movieDetail/:id" element={<MovieDetail />} />
+        <Route path="/showDetail/:id" element={<TvShowDetail />} />
        </Routes>
 
       {/* FOOTER */}

@@ -6,6 +6,8 @@ import MoviesPoster from "../components/PosterMovies";
 import TvShowPoster from "../components/PosterTvShows";
 import { useData } from "./DataContext";
 
+import { useNavigate } from "react-router-dom";
+
 export default function Home() {
   // Lấy dữ liệu và hàm setter từ DataContext
   const {
@@ -15,6 +17,8 @@ export default function Home() {
     trailerNowPlaying, trailerPopular, trailerTopRated, trailerUpcoming
   } = useData();
 
+  const navigate = useNavigate();
+
   const [trendingFilter, setTrendingFilter] = useState("Today");
 
   useEffect(() => {
@@ -23,7 +27,7 @@ export default function Home() {
       // Cập nhật state trending trong context
       setTrending(res.data?.results || []);
     });
-  }, [trendingFilter]); // Chạy lại useEffect khi trending filer thay đổi
+  }, [trendingFilter]); //eslint-disable-line
 
 
 //render movies card
@@ -243,7 +247,7 @@ export default function Home() {
           </div>
           <div className="tv-card-content">
             {tvPopular.map((tv) => (
-              <div className="card" key={tv.id}>
+              <div className="card" key={tv.id} onClick={() => navigate(`/showDetail/${tv.id}`)}>
                         <img src={img + tv.poster_path} alt={tv.name} />
                     <div className="card-title">
                         <p>{tv.name}</p>
@@ -273,7 +277,7 @@ export default function Home() {
           </div>
           <div className="tv-card-content">
             {tvTopRated.map((tv) => (
-              <div className="card" key={tv.id}>
+              <div className="card" key={tv.id} onClick={() => navigate(`/showDetail/${tv.id}`)}>
                         <img src={img + tv.poster_path} alt={tv.name} />
                     <div className="card-title">
                        <p>{tv.name}</p>
@@ -302,7 +306,7 @@ export default function Home() {
           </div>
           <div className="tv-card-content">
             {tvAir.map((tv) => (
-              <div className="card" key={tv.id}>
+              <div className="card" key={tv.id} onClick={() => navigate(`/showDetail/${tv.id}`)}>
                         <img src={img + tv.poster_path} alt={tv.name} />
                     <div className="card-title">
                         <p>{tv.name}</p>

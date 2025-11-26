@@ -1,28 +1,27 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getMovieDetail, getMovieCredits } from '../api/movieApi';
+import { getTvShowDetail, getTvShowCredits } from '../api/movieApi';
+export default function TvShowDetail() {
+    const { id } = useParams(); // Lấy id từ URL
+    const [tvShow, setTvShow] = useState(null);
+    const [creditsTvShow, setCreditsTvShow] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-export default function MovieDetail() {
-  const { id } = useParams(); // Lấy id từ URL
-  const [movie, setMovie] = useState(null);
-  const [credits, setCredits] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
+    useEffect(() => {
     const fetchDetails = async () => {
       setLoading(true);
       try {
         // Gọi song song API chi tiết phim và danh sách diễn viên
-        const [movieRes, creditsRes] = await Promise.all([
-          getMovieDetail(id),
-          getMovieCredits(id)
+        const [tvShowRes, creditsRes] = await Promise.all([
+          getTvShowDetail(id),
+          getTvShowCredits(id)
         ]);
-        setMovie(movieRes.data);
-        setCredits(creditsRes.data);
+        setTvShow(tvShowRes.data);
+        setCreditsTvShow(creditsRes.data);
       } catch (err) {
-        console.error("Failed to fetch movie details or credits:", err);
-        setError("Could not load movie details.");
+        console.error("Failed to fetch tv show details or credits:", err);
+        setError("Could not load tv show details.");
       } finally {
         setLoading(false);
       }
@@ -33,7 +32,7 @@ export default function MovieDetail() {
     }
   }, [id]); // Chạy lại effect khi id thay đổi
 
-  if (loading) return (
+    if (loading) return (
     <>
       
 <div className="dot-spinner">
@@ -49,42 +48,42 @@ export default function MovieDetail() {
     </>
   );
   if (error) return <div>{error}</div>;
-  if (!movie) return null;
+  if (!tvShow) return null;
 
   const imgUrl = "https://image.tmdb.org/t/p/w200";
   const placeholderImg = "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg";
 
   return (
     <>
-    <section className="movie-detail-container" key={movie.id}>
+    <section className="movie-detail-container" key={tvShow.id}>
           {/* Sử dụng inline style để đặt ảnh nền động */}
           <div 
             className="backdrop" 
             style={{ 
-              backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` 
+              backgroundImage: `url(https://image.tmdb.org/t/p/original${tvShow.backdrop_path})` 
             }}
           >
           </div>
         <div className="detail-content">
             <div className="detail-content-l">
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                <img src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`} alt={tvShow.name} />
             </div>
             <div className="detail-content-r">
                 <div className="head">
                     <div className="title">
-                        <h3>{movie.title}</h3>
-                        <span>({movie.release_date ? new Date(movie.release_date).getFullYear() : ''})</span>
+                        <h3>{tvShow.name}</h3>
+                        <span>({tvShow.first_air_date ? new Date(tvShow.first_air_date).getFullYear() : ''})</span>
                     </div>
                     <div className="genres">
                        <div className="genres-list">
                             <i className="ri-price-tag-3-fill"></i>
-                            {movie.genres.map(genre => (
+                            {tvShow.genres.map(genre => (
                                 <span key={genre.id} className="genre-tag">{genre.name}</span>
                             ))}
                        </div>
                        <div className="location">
                              <i className="ri-map-pin-2-fill"></i>
-                            {movie.origin_country.map(country => (
+                            {tvShow.origin_country.map(country => (
                                 // Thêm key duy nhất cho mỗi phần tử trong danh sách
                                 <span key={country}>{country}</span>
                             ))}
@@ -100,15 +99,15 @@ export default function MovieDetail() {
                 </div>
                 <div className="overview">
                     <p>Overview</p>
-                    <p>{movie.overview}</p>
+                    <p>{tvShow.overview}</p>
                 </div>
 
                 <hr />
 
                 <div className="vote-container">
-                    <p>{movie.vote_average}<i className="ri-star-fill"></i> / {movie.vote_count} <i className="ri-group-fill"></i></p>
+                    <p>{tvShow.vote_average}<i className="ri-star-fill"></i> / {tvShow.vote_count} <i className="ri-group-fill"></i></p>
                     <span>|</span>
-                    <p><i className="ri-timer-2-line"></i> {movie.runtime}m</p>
+                    <p><i className="ri-timer-2-line"></i> {tvShow.episode_run_time[0]}m</p>
                 </div>
                
             </div>
@@ -116,7 +115,7 @@ export default function MovieDetail() {
     </section>
 
         <div className='cast'>
-                {credits?.cast.slice(0, 15).map((actor) => ( // Hiển thị 15 diễn viên đầu tiên
+                {creditsTvShow?.cast.slice(0, 15).map((actor) => ( // Hiển thị 15 diễn viên đầu tiên
                 <div key={actor.cast_id} className='cast-card'>
                     <img 
                     src={actor.profile_path ? `${imgUrl}${actor.profile_path}` : placeholderImg} 

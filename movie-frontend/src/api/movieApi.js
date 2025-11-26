@@ -14,6 +14,8 @@ export const getMovieCredits = (id) => axios.get(`${API}/movie/${id}/credits`);
 export const getTvPopular = () => axios.get(`${API}/tv/tv-popular`);
 export const getTvTopRated = () => axios.get(`${API}/tv/tv-top-rated`);
 export const getTvAir = () => axios.get(`${API}/tv/tv-on-the-air`);
+export const getTvShowDetail = (id) => axios.get(`${API}/tv/${id}`);
+export const getTvShowCredits = (id) => axios.get(`${API}/tv/${id}/credits`);
 
 //trailer 
 export const getTrailerNowPlaying = () => axios.get(`${API}/trailers/latest`);
