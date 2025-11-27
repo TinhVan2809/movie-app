@@ -1,4 +1,7 @@
-export default function MoviesPoster({m}) {
+import { useNavigate } from "react-router-dom";
+
+export default function MoviesPostr({m}) {
+    const navigate = useNavigate();
       const img = "https://image.tmdb.org/t/p/w300";
     return(
         <>
@@ -27,7 +30,7 @@ export default function MoviesPoster({m}) {
                 
                 <div className="list-movies">
                     {m.map((v) => (
-                        <div className="card" key={v.id}>
+                        <div className="card" key={v.id} onClick={() => navigate(`/movieDetail/${v.id}`)}>
                             <img src={img + v.poster_path} alt={v.title} />
                             <div className="card-title"><p>{v.title}</p></div>
                         </div>

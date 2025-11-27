@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function TvShowPoster({tv}) {
+    const navigate = useNavigate();
     const img = "https://image.tmdb.org/t/p/w300";
     return (
         <>
@@ -36,7 +39,7 @@ export default function TvShowPoster({tv}) {
                     <div className="right">
                         <div className="list-shows-container">
                             {tv.map((t) => (
-                                <div className="card">
+                                <div className="card" key={t.id} onClick={() => navigate(`/showDetail/${t.id}`)}>
                                     <img src={img + t.poster_path} alt={t.name} title={t.name} />
                                     <div className="title">
                                         <p>{t.name}</p>
