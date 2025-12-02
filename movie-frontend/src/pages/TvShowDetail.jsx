@@ -9,7 +9,7 @@ export default function TvShowDetail() {
     const [error, setError] = useState(null);
     const [showTrailer, setShowTrailer] = useState(false);
     const [trailerKey, setTrailerKey] = useState(null);
-
+    // const [session, setSession] = useState([]);
 
     useEffect(() => {
     const fetchDetails = async () => {
@@ -117,6 +117,13 @@ export default function TvShowDetail() {
                     <button>Add To List<i className="ri-menu-add-line"></i></button>
                     <button>Watch List<i className="ri-play-list-2-fill"></i></button>
                     <button>Favorty<i className="ri-heart-fill"></i></button>
+                </div>
+                <div className="session">
+                  <div className="session-content">
+                    {tvShow.seasons.map((s)=> (
+                       <button><p>{s.name}</p></button>
+                  ))}
+                  </div>
                 </div>
                 <div className="overview">
                     <p>Overview</p>

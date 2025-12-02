@@ -236,6 +236,54 @@ section.movie-detail-container{
     margin-top: 1rem;
 }
 
+.detail-content .session {
+    width: 750px;
+    margin-top: 0.5rem;
+}
+ .detail-content .session .session-content {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: hidden ;
+ }
+
+ .detail-content .session .session-content::-webkit-scrollbar{
+  height: 3px;
+ }
+
+ .detail-content .session .session-content::-webkit-scrollbar-thumb{
+  background-color: #fff;
+  border-radius: 30px;
+ }
+
+  .detail-content .session .session-content > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10px;
+    padding: 20px 25px;
+    border-radius: 7px;
+    background-color: transparent;
+    border: 1px solid rgba(198, 179, 179, 0.667);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+    .detail-content .session .session-content > button > p {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+  .detail-content .session .session-content > button:hover{
+    opacity: 0.5;
+  }
+
 .detail-content .detail-content-r .detail-btn > button {
     padding: 9px 13px;
     border-radius: 20px;
@@ -250,7 +298,7 @@ section.movie-detail-container{
     font-size: 16px;
     cursor: pointer;
     transition: all 0.2s;
-}
+  }
 
 .detail-content .detail-content-r .detail-btn > button:hover {
     background-color: #ffffff;
