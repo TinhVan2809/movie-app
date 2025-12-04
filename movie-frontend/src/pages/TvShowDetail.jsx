@@ -11,6 +11,8 @@ export default function TvShowDetail() {
     const [trailerKey, setTrailerKey] = useState(null);
     // const [session, setSession] = useState([]);
 
+    const img = "https://image.tmdb.org/t/p/w500/";
+
     useEffect(() => {
     const fetchDetails = async () => {
       setLoading(true);
@@ -142,20 +144,7 @@ export default function TvShowDetail() {
         </div>
     </section>
 
-        <div className='cast'>
-                {creditsTvShow?.cast.slice(0, 15).map((actor) => ( // Hiển thị 15 diễn viên đầu tiên
-                <div key={actor.cast_id} className='cast-card'>
-                    <img 
-                    src={actor.profile_path ? `${imgUrl}${actor.profile_path}` : placeholderImg} 
-                    alt={actor.name} 
-                    />
-                    <p className='name'>{actor.name}</p>
-                    <p className='character'>{actor.character}</p>
-                </div>
-                ))}
-        </div>
-
-        {showTrailer && (
+          {showTrailer && (
             <div className="trailer-modal">
                 <div className="trailer-modal-content">
                     <button className="close-btn" onClick={() => setShowTrailer(false)}>
@@ -170,6 +159,34 @@ export default function TvShowDetail() {
                 </div>
             </div>
         )}
+
+        <div className='cast'>
+                {creditsTvShow?.cast.slice(0, 15).map((actor) => ( // Hiển thị 15 diễn viên đầu tiên
+                <div key={actor.cast_id} className='cast-card'>
+                    <img 
+                    src={actor.profile_path ? `${imgUrl}${actor.profile_path}` : placeholderImg} 
+                    alt={actor.name} 
+                    />
+                    <p className='name'>{actor.name}</p>
+                    <p className='character'>{actor.character}</p>
+                </div>
+                ))}
+        </div>
+
+      <div className="infomation">
+            <h3>Created By</h3>
+          <div className="created-by">
+                {tvShow.created_by.map((c) => (
+                  <div className="card">
+                    <img src={img + c.profile_path} />
+                    <p>{c.name}</p>
+                  </div>
+                ))}
+          </div>
+
+      </div>
+
+  
     </>
   );
 }
