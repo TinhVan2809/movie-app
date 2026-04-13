@@ -74,28 +74,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* TRAILER POPULAR */}
-        <div className="trailer-lastest trailer-popular">
-          <div className="trailer-title">
-            <h2>Watch Trailers <i className="ri-arrow-right-wide-line"></i> Popular</h2>
-          </div>
-          <div className="trailers-container">
-            {trailerPopular.slice(0, 10).map((trailer) => (
-              <div className="trailer-card" key={trailer.movie_id}>
-                <iframe
-                  src={`https://www.youtube.com/embed/${trailer.trailer_key}`}
-                  title={trailer.trailer_name}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-                <div className="trailer-card-title">
-                  <p>{trailer.title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
       <div className="movie-content slideShow">
         <div className="title">
@@ -150,28 +128,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* TRAILER NOW PLAYING */}
-        <div className="trailer-lastest trailer-now-playing">
-          <div className="trailer-title">
-            <h2>Watch Trailers <i className="ri-arrow-right-wide-line"></i> Now Playing</h2>
-          </div>
-          <div className="trailers-container">
-            {trailerNowPlaying.slice(0, 10).map((trailer) => (
-              <div className="trailer-card" key={trailer.movie_id}>
-                <iframe
-                  src={`https://www.youtube.com/embed/${trailer.trailer_key}`}
-                  title={trailer.trailer_name}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-                <div className="trailer-card-title">
-                  <p>{trailer.title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
       <div className="movie-content slideShow">
         <div className="title">
@@ -188,28 +144,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* TRAILER UPCOMING */}
-        <div className="trailer-lastest trailer-up-coming">
-          <div className="trailer-title">
-            <h2>Watch Trailers <i className="ri-arrow-right-wide-line"></i> Upcoming</h2>
-          </div>
-          <div className="trailers-container">
-            {trailerUpcoming.slice(0, 10).map((trailer) => (
-              <div className="trailer-card" key={trailer.movie_id}>
-                <iframe
-                  src={`https://www.youtube.com/embed/${trailer.trailer_key}`}
-                  title={trailer.trailer_name}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-                <div className="trailer-card-title">
-                  <p>{trailer.title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
        <div className="movie-content slideShow">
         <div className="title">
